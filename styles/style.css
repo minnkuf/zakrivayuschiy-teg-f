@@ -1,9 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100vh;
+  margin: 0;
   color: var(--main-color);
   font-family: var(--font-main), Arial, sans-serif;
-  font-variation-settings: 'wght' var(--font-weight-text);
+  font-variation-settings: "wght" var(--font-weight-text);
   background-color: var(--page-bg);
   background-image: var(--bg-gradient);
   background-attachment: fixed;
@@ -39,6 +46,7 @@
 }
 
 .header__title {
+  text-transform: uppercase;
   font-size: clamp(14px, 2vw, 23px);
   line-height: 1;
   font-weight: 400;
@@ -50,7 +58,6 @@
   gap: 50px;
   padding-block: 100px;
 }
-
 
 .cards {
   display: grid;
@@ -65,7 +72,7 @@
   padding: 4px 10px 6px;
   font-size: 18px;
   line-height: 1.22;
-  font-variation-settings: 'wght' var(--font-weight-title);
+  font-variation-settings: "wght" var(--font-weight-title);
 }
 
 .card__image-wrapper {
@@ -84,10 +91,17 @@
   line-height: 1;
   opacity: 0.5;
   mix-blend-mode: hard-light;
-  text-shadow: 1px 0 var(--label-stroke-color), -1px 0 var(--label-stroke-color), 0 1px var(--label-stroke-color), 0 -1px var(--label-stroke-color);
+  text-shadow:
+    1px 0 var(--label-stroke-color),
+    -1px 0 var(--label-stroke-color),
+    0 1px var(--label-stroke-color),
+    0 -1px var(--label-stroke-color);
 }
 
-@supports ((-webkit-text-stroke: 1px var(--label-stroke-color)) or (text-stroke: 1px var(--label-stroke-color))) {
+@supports (
+  (-webkit-text-stroke: 1px var(--label-stroke-color)) or
+    (text-stroke: 1px var(--label-stroke-color))
+) {
   .card__label {
     -webkit-text-stroke: 1px var(--label-stroke-color);
     text-stroke: 1px var(--label-stroke-color);
@@ -166,7 +180,7 @@
 }
 
 .button::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: var(--accent-color);
@@ -249,9 +263,16 @@
   transition-delay: 0.05s;
 }
 
-.like-icon:active .core,
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0s;
+}
+
 .like-icon:active .main-body {
   fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0.05s;
 }
 
 .like-icon.is-liked .core {
@@ -321,10 +342,6 @@
 }
 
 @media (width <=375px) {
-  :root {
-    --content-width: 100%;
-  }
-
   .header {
     margin-block-start: 100px;
     padding-block: 120px;
